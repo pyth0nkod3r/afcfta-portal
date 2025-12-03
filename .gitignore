@@ -1,0 +1,177 @@
+.DS_Store
+.env
+/node_modules/
+.specstory/
+
+# React Router
+/.react-router/
+/build/
+/do-not-track/
+/do-not-track-2/
+INTEGRATION_TEST_RESULTS.md
+AGENTS.md
+lint_output*.*
+SUBDOMAIN_SETUP.md
+
+# Generated .gitignore patterns
+
+# React
+node_modules/
+/.pnp
+.pnp.js
+/coverage
+/build
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+.stylelintcache
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+coverage/
+.npm
+.eslintcache
+.yarn-integrity
+.env
+.env.test
+.cache
+.parcel-cache
+.next
+.nuxt
+dist/
+.serverless/
+
+# PHP
+/vendor/
+/node_modules/
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.user.ini
+error_log
+php_errors.log
+.htaccess
+.htpasswd
+Thumbs.db
+.DS_Store
+/nbproject/private/
+/storage/*.key
+/tests/_output/*
+/tests/_support/_generated
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+htmlcov/
+.tox/
+.coverage
+.cache
+.pytest_cache/
+.env
+.venv
+env/
+venv/
+.ipynb_checkpoints
+.mypy_cache/
+.ruff_cache/
+
+# Log Files
+*.log
+*.log.*
+logs/
+log/
+/logs
+/log
+
+# Temporary Files
+*.tmp
+*.temp
+tmp/
+temp/
+~*
+*~
+
+# Backup Files
+*.bak
+*.backup
+*.orig
+*.swp
+*.swo
+
+# IDE Files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+.vs/
+
+# Dependencies
+node_modules/
+vendor/
+packages/
+
+# Build Output
+build/
+dist/
+out/
+*.min.*
+*.map
+
+# Documentation
+docs/_build/
+*.pdf
+*.docx
+*.pptx
+
+# OS Generated
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Environment
+.env
+.env.*
+!.env.example
+.envrc
+.environment
+
+# Cache Files
+*.cache
+.cache/
+cache/
+**/cache/
+.npm/
+.yarn/
+
+.vercel/*

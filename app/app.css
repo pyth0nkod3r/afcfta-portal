@@ -1,0 +1,298 @@
+@import "tailwindcss";
+@source "./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}";
+@plugin "tailwindcss-animate";
+
+@theme {
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-heading: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-success: hsl(var(--success));
+  --color-success-foreground: hsl(var(--success-foreground));
+  --color-highlight: hsl(var(--highlight));
+  --color-highlight-foreground: hsl(var(--highlight-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-sidebar-background: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+  --color-neutral-950: #0b0e1a;
+  --color-surface: #f4f6fa;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --shadow-card: 0 20px 45px -20px rgb(0 76 151 / 35%);
+  --container-max: 1200px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for fixed header */
+  }
+
+  html,
+  body {
+    @apply min-h-screen bg-white text-gray-900 antialiased;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  a {
+    @apply text-primary hover:text-accent transition-colors duration-200;
+  }
+
+  /* Smooth focus transitions */
+  *:focus-visible {
+    transition:
+      outline-color 0.2s ease,
+      outline-offset 0.2s ease;
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Enhanced scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+  }
+
+  /* Portal CSS Variables for shadcn/ui */
+  :root {
+    --background: 220 25% 97%;
+    --foreground: 220 15% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 20%;
+    --primary: 220 85% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 20% 92%;
+    --secondary-foreground: 220 15% 20%;
+    --muted: 220 20% 95%;
+    --muted-foreground: 220 10% 50%;
+    --accent: 45 95% 55%;
+    --accent-foreground: 220 15% 20%;
+    --success: 145 65% 45%;
+    --success-foreground: 0 0% 100%;
+    --highlight: 45 100% 96%;
+    --highlight-foreground: 45 85% 35%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 220 85% 45%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 220 15% 95%;
+    --card: 220 20% 12%;
+    --card-foreground: 220 15% 95%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 220 15% 95%;
+    --primary: 220 85% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 220 15% 95%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 45 95% 60%;
+    --accent-foreground: 220 15% 10%;
+    --success: 145 65% 50%;
+    --success-foreground: 0 0% 100%;
+    --highlight: 45 85% 25%;
+    --highlight-foreground: 45 100% 85%;
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 220 85% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+}
+
+.container {
+  max-width: var(--container-max);
+}
+
+/* Partner Logo Scrolling Animations - Optimized for performance */
+@keyframes scroll-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+  will-change: transform;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 30s linear infinite;
+  will-change: transform;
+}
+
+/* Floating animation for hero elements */
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, -10px, 0);
+  }
+  50% {
+    transform: translate3d(0, 10px, 0);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Pulse animation for loading states */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Fade in animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+/* Slide up animation */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+/* Scale in animation */
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.4s ease-out forwards;
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+.will-change-auto {
+  will-change: auto;
+}
+/* Progress bar with custom width */
+.progress-bar {
+  width: var(--width);
+}
