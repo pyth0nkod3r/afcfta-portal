@@ -85,7 +85,6 @@ function getUsers(): Record<string, UserWithPassword> {
     country: "Ghana",
     industry: "Technology",
     address: "Africa Trade House, Accra",
-    contactName: "System Admin",
     phone: "+233 55 555 5555",
     tin: "GHA-000000000",
     password: "password123",
