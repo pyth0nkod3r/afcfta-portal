@@ -157,6 +157,14 @@ export default function LoginPage() {
                       </Link>
                     </Button>
                   </div>
+                  
+                  <div className="mt-4 rounded-lg bg-primary/5 p-3 text-center border border-primary/10">
+                    <p className="text-xs text-muted-foreground font-medium mb-1">Demo Credentials</p>
+                    <div className="flex flex-col gap-1">
+                      <p className="text-xs text-muted-foreground">Email: <span className="font-mono text-foreground select-all">admin@afcfta.app</span></p>
+                      <p className="text-xs text-muted-foreground">Password: <span className="font-mono text-foreground select-all">password123</span></p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
