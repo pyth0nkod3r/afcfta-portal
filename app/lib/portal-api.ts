@@ -69,7 +69,31 @@ export interface ChartDataPoint {
 // Helper functions
 function getUsers(): Record<string, UserWithPassword> {
   const usersJson = localStorage.getItem(USERS_KEY);
-  return usersJson ? JSON.parse(usersJson) : {};
+  if (usersJson) {
+    return JSON.parse(usersJson);
+  }
+
+  // Seed default user
+  const defaultUser: UserWithPassword = {
+    id: "default-admin",
+    name: "System Admin",
+    email: "admin@afcfta.app",
+    avatar:
+      "https://ui-avatars.com/api/?name=System+Admin&background=0D8ABC&color=fff",
+    companyName: "AfCFTA Portal",
+    registrationNumber: "SYS-001",
+    country: "Ghana",
+    industry: "Technology",
+    address: "Africa Trade House, Accra",
+    phone: "+233 55 555 5555",
+    tin: "GHA-000000000",
+    password: "password123",
+    createdAt: new Date().toISOString(),
+  };
+
+  const users = { [defaultUser.id]: defaultUser };
+  localStorage.setItem(USERS_KEY, JSON.stringify(users));
+  return users;
 }
 
 function saveUsers(users: Record<string, UserWithPassword>): void {
@@ -92,10 +116,14 @@ export const portalApi = {
     await new Promise((resolve) => setTimeout(resolve, 800));
 
     const users = getUsers();
-    const user = Object.values(users).find((u) => u.email === credentials.email);
+    const user = Object.values(users).find(
+      (u) => u.email === credentials.email
+    );
 
     if (!user) {
-      throw new Error("User not found. Please check your email or register first.");
+      throw new Error(
+        "User not found. Please check your email or register first."
+      );
     }
 
     // In a real implementation, verify password hash
@@ -122,7 +150,9 @@ export const portalApi = {
 
     // Check if user already exists
     if (Object.values(users).some((u) => u.email === data.email)) {
-      throw new Error("An account with this email already exists. Please login instead.");
+      throw new Error(
+        "An account with this email already exists. Please login instead."
+      );
     }
 
     // Create new user
