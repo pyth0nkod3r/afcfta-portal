@@ -25,7 +25,7 @@ const HeroSection = () => {
               <p className="text-sm font-medium text-highlight-foreground">
                 Required Score
               </p>
-              <p className="text-2xl font-bold text-accent-foreground">100%</p>
+              <p className="text-2xl font-bold text-accent-foreground">70%</p>
             </div>
           </div>
 
