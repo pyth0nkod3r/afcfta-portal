@@ -13,7 +13,7 @@ const steps = [
     number: "2",
     title: "Review Your Results",
     description:
-      "Get instant feedback on your readiness score. If you score 100%, proceed directly to registration.",
+      "Get instant feedback on your readiness score. If you score above 70%, proceed directly to registration.",
   },
   {
     number: "3",
