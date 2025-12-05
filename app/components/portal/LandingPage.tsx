@@ -5,7 +5,7 @@ import HowItWorksSection from "~/components/portal/HowItWorksSection";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-white to-cyan-100">
       <Header />
       <HeroSection />
       <BenefitsSection />
