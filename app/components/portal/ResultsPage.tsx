@@ -117,8 +117,8 @@ export default function ResultsPage() {
                 Your Readiness Score
               </h1>
 
-              <div className="inline-flex items-center justify-center w-32 h-32 rounded-full bg-primary/10 border-8 border-primary mb-6">
-                <span className="text-5xl font-bold text-primary">
+              <div className="inline-flex items-center justify-center w-48 h-48 rounded-full bg-primary/10 border-8 border-primary mb-6">
+                <span className="text-6xl font-bold text-primary">
                   {score}%
                 </span>
               </div>
