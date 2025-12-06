@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 import { Button } from "~/components/ui/button";
 import { Card } from "~/components/ui/card";
@@ -26,6 +26,22 @@ import { portalApi } from "~/lib/portal-api";
 export default function RegisterPage() {
   const { toast } = useToast();
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    // Verify assessment completion
+    const isComplete = sessionStorage.getItem("afcfta_assessment_complete") === "true";
+    const score = parseInt(sessionStorage.getItem("afcfta_assessment_score") || "0");
+    
+    if (!isComplete || score < 70) {
+      toast({
+        title: "Assessment Required",
+        description: "You must complete the readiness assessment with a passing score before registering.",
+        variant: "destructive",
+      });
+      navigate("/assessment");
+    }
+  }, [navigate, toast]);
+
   const [step, setStep] = useState(1);
   const totalSteps = 3;
   const [isSubmitting, setIsSubmitting] = useState(false);

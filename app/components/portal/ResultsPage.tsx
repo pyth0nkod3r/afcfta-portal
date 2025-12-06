@@ -8,12 +8,21 @@ import Header from "~/components/portal/Header";
 export default function ResultsPage() {
   const [searchParams] = useSearchParams();
   const [score, setScore] = useState(0);
+  const [isVerified, setIsVerified] = useState(false);
 
   useEffect(() => {
     const scoreParam = searchParams.get("score");
     if (scoreParam) {
       setScore(parseInt(scoreParam));
     }
+    
+    // Verify if assessment was actually completed
+    const isComplete = sessionStorage.getItem("afcfta_assessment_complete") === "true";
+    const storedScore = sessionStorage.getItem("afcfta_assessment_score");
+    
+    // Check if stored score matches URL score (optional security enhancement)
+    // For now, just checking if assessment was completed
+    setIsVerified(isComplete);
   }, [searchParams]);
 
   const isPassed = score >= 70;
@@ -167,7 +176,7 @@ export default function ResultsPage() {
             </Card>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              {isPassed ? (
+              {isPassed && isVerified ? (
                 <>
                   <Button size="lg" asChild>
                     <Link to="/register">
@@ -180,8 +189,10 @@ export default function ResultsPage() {
                   </Button>
                 </>
               ) : (
-                <Button size="lg" variant="outline" asChild>
-                  <Link to="/assessment">Retake Assessment</Link>
+                <Button size="lg" variant={isPassed ? "default" : "outline"} asChild>
+                  <Link to="/assessment">
+                    {isPassed ? "Verify Readiness to Register" : "Retake Assessment"}
+                  </Link>
                 </Button>
               )}
 

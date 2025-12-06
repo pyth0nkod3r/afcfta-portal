@@ -41,6 +41,11 @@ export default function AssessmentPage() {
     if (isLastQuestion) {
       const yesCount = Object.values(answers).filter((a) => a === "Yes").length;
       const score = Math.round((yesCount / questions.length) * 100);
+      
+      // Store assessment result in session storage
+      sessionStorage.setItem("afcfta_assessment_complete", "true");
+      sessionStorage.setItem("afcfta_assessment_score", score.toString());
+      
       navigate(`/results?score=${score}`);
     } else {
       setCurrentQuestion((prev) => prev + 1);
